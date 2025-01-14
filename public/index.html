@@ -4,12 +4,28 @@
         <title>생일 출력</title>
     </head>
     <body>
-        <form action="/bday" method="get">
-            생일 출력하기 <br>
+        <h1>생일 출력하기</h1>
+        <form id="bdayform">
             1. 양해미 2. 송영은 3. 강지웅 4. 오현지 5. 윤정섭 <br>
-            <input type="text" name="number" placeholder="번호를 입력하세요" required>
-            <input type="submit" value="제출">
+            <input type="text" id="number" placeholder="번호를 입력하세요" required>
+            <button type="submit">제출</button>
         </form>
-        <div id="result"></div>
+        <script>
+            document.getElementById('bdayform').addEventListener('submit', function(event) {
+              event.preventDefault();
+        
+              const number = document.getElementById('number').value;
+        
+              fetch(`/getbday/${number}`)
+                .then(data => {
+                  console.log(data.data);
+                  //const {month, day} = data;
+                  //alert(`${month}월, ${day}일`);
+                })
+                .catch(error => {
+                  alert('오류가 발생했습니다. 다시 시도해주세요.');
+                });
+            });
+          </script>
     </body>
 </html>
