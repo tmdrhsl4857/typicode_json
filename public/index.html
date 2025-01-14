@@ -16,11 +16,14 @@
         
               const number = document.getElementById('number').value;
         
-              fetch(`/getbday/${number}`)
-                .then(data => {
-                  console.log(data.data);
-                  //const {month, day} = data;
-                  //alert(`${month}월, ${day}일`);
+              fetch(`https://my-json-server.typicode.com/tmdrhsl4857/typicode_json/charactor/${number}`)
+                .then((response) => response.json())
+                .then((json) => {
+                  console.log(json)
+                  if (json.month)
+                  alert(`${json.month}, ${json.day}`);
+                  else 
+                  alert("없음");
                 })
                 .catch(error => {
                   alert('오류가 발생했습니다. 다시 시도해주세요.');
