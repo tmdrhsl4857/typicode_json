@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/tmdrhsl4857/typicode_json/issues"
   },
-  "homepage": "https://github.com/tmdrhsl4857/typicode_json#readme"
+  "homepage": "https://github.com/tmdrhsl4857/typicode_json#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }
