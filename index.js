@@ -1,18 +1,14 @@
 const express = require('express');
-const start = express();
+const app = express();
 const port = 3000;
 
-start.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.send('생일 출력하기');
+    res.sendfile(__dirname + "/" + "index.html");
 });
 
-start.get('/example', (req, res, next) => {
-    console.log("첫 번째 콜백 함수");
-    next();
-}, (req, res) => {
-    res.send('두 번째 콜백 함수');
-});
-
-start.listen(port, () => {
+app.listen(port, () => {
     console.log(`서버가 실행됩니다. http://localhost:${port}`);
 });
