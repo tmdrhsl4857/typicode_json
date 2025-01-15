@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>생일 출력</title>
+    </head>
+    <body>
+        <h1>생일 출력하기</h1>
+        <form id="bdayform">
+            1. 양해미 2. 송영은 3. 강지웅 4. 오현지 5. 윤정섭 <br>
+            <input type="text" id="number" name="name" placeholder="번호 또는 이름을 입력하세요" required>
+            <button type="submit">제출</button>
+        </form>
+        <script>
+            document.getElementById('bdayform').addEventListener('submit', function(event) {
+              event.preventDefault();
+        
+              const input = 
+              document.querySelector('input[name="name"]').value || 
+              document.getElementsById('number').value
+
+              fetch(`https://my-json-server.typicode.com/tmdrhsl4857/typicode_json/charactor`)
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log('데이터: ',data)
+                  const person = data.find(o => o.name === input)
+                  console.log('찾은 사람: ',person)
+                  if (person)
+                  alert(`${person.month}월 ${person.day}일`)
+                  else 
+                  alert("없음")
+                })
+                .catch(error => {
+                  alert('오류');
+                });
+            });
+          </script>
+    </body>
+</html>
